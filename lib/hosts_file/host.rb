@@ -8,6 +8,10 @@ module HostsFile
       @aliases = aliases
     end
 
+    def name
+      hostname
+    end
+
     def hostname
       canonical_hostname
     end
