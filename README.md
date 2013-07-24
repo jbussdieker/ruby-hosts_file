@@ -10,7 +10,7 @@ Basic library for reading hosts file entries.
 
     require 'hosts_file'
 
-    hosts = HostsFile.read("/etc/hosts")
+    hosts = HostsFile.load("/etc/hosts")
     hosts.collect {|host| host.ip}
     hosts.collect {|host| host.name}
     hosts.collect {|host| host.aliases}
