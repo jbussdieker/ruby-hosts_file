@@ -1,29 +1,18 @@
 # HostsFile
 
-TODO: Write a gem description
+[![Build Status](https://travis-ci.org/jbussdieker/ruby-hosts_file.png?branch=master)](https://travis-ci.org/jbussdieker/ruby-hosts_file)
+[![Code Climate](https://codeclimate.com/github/jbussdieker/ruby-hosts_file.png)](https://codeclimate.com/github/jbussdieker/ruby-hosts_file)
+[![Gem Version](https://badge.fury.io/rb/hosts_file.png)](http://badge.fury.io/rb/hosts_file)
 
-## Installation
-
-Add this line to your application's Gemfile:
-
-    gem 'hosts_file'
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install hosts_file
+Basic library for reading hosts file entries.
 
 ## Usage
 
-TODO: Write usage instructions here
+    require 'hosts_file'
 
-## Contributing
-
-1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
+    hosts = HostsFile.read("/etc/hosts")
+    hosts.collect {|host| host.ip}
+    hosts.collect {|host| host.name}
+    hosts.collect {|host| host.aliases}
+    hosts.find {|host| host.hostname == "somehost"}
+    hosts.find {|host| host.ip == "1.1.1.1"}

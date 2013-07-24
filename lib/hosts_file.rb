@@ -1,5 +1,8 @@
 require "hosts_file/version"
+require "hosts_file/file"
 
 module HostsFile
-  # Your code goes here...
+  def self.load(filename = "/etc/hosts")
+    File.new(filename)
+  end
 end
