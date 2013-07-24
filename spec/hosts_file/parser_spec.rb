@@ -8,19 +8,33 @@ describe HostsFile::Parser do
     host.aliases.should eql(alias_name)
   end
 
-  it "should parse multiline" do
-    @parser = HostsFile::Parser.new("1.1.1.1 hostname\n2.2.2.2 hostname2")
-    @parser.collect {|h| h}.length.should eql(2)
+  def test_case(string, size)
+    hp = HostsFile::Parser.new(string)
+    hp.collect {|v|v}.length.should eql(size)
   end
 
-  it "should not parse comments" do
-    @parser = HostsFile::Parser.new("#1.1.1.1 hostname")
-    @parser.collect {|h| h}.length.should eql(0)
+  it "should handle a file with only comments" do
+    test_case("# TEST", 0)
+  end
+
+  it "should handle a file with one host" do
+    test_case("1.1.1.1 HOSTNAME", 1)
+  end
+
+  it "should handle a basic file" do
+    test_case("# TEST\n1.1.1.1 HOSTNAME", 1)
+  end
+
+  it "should handle empty lines" do
+    test_case("\n\n# TEST\n1.1.1.1 HOSTNAME\n\n", 1)
+  end
+
+  it "should handle multiple lines" do
+    test_case("1.1.1.1 HOSTNAME\n1.1.1.1 HOSTNAME\n1.1.1.1 HOSTNAME", 3)
   end
 
   it "should not parse invalid lines" do
-    @parser = HostsFile::Parser.new("1.1.1.1")
-    @parser.collect {|h| h}.length.should eql(0)
+    test_case("1.1.1.1\n", 0)
   end
 
   it "should handle basic syntax" do
