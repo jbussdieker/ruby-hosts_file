@@ -1,8 +1,9 @@
 # HostsFile
 
+[![Gem Version](https://badge.fury.io/rb/hosts_file.png)](http://badge.fury.io/rb/hosts_file)
 [![Build Status](https://travis-ci.org/jbussdieker/ruby-hosts_file.png?branch=master)](https://travis-ci.org/jbussdieker/ruby-hosts_file)
 [![Code Climate](https://codeclimate.com/github/jbussdieker/ruby-hosts_file.png)](https://codeclimate.com/github/jbussdieker/ruby-hosts_file)
-[![Gem Version](https://badge.fury.io/rb/hosts_file.png)](http://badge.fury.io/rb/hosts_file)
+[![Dependency Status](https://gemnasium.com/jbussdieker/ruby-hosts_file.svg)](https://gemnasium.com/jbussdieker/ruby-hosts_file)
 
 Basic library for reading hosts file entries.
 
